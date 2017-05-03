@@ -1,12 +1,13 @@
 {
-	"name": "yamkeys",
+	"name": "yamlkeys",
 	"description": "A runtime configuration management utility",
 	"copyright": "Copyright © 2013-2016 Nathan M. Swan",
 	"license": "MIT",
 	"authors": [
-		"Nathan M. Swan"
+		"Nathan M. Swan",
+        "Daniel Kozak"
 	],
 	"dependencies": {
-		"dyaml": ">=0.5.2"
+		"yaml-d": "~>0.0.1"
 	}
 }

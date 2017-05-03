@@ -1,7 +1,9 @@
 
-## yamkeys
+**This is a fork of [yamkeys repository](https://github.com/carlor/yamkeys)**
 
-**yamkeys** is a simple runtime configuration file format, built with vibe.d in mind.
+## yamlkeys
+
+**yamlkeys** is a simple runtime configuration file format, built with vibe.d in mind.
 
 ### Tutorial
 
@@ -21,7 +23,7 @@ that need configuration:
 	     port: 3000
 	     accessLogFile: dev.log
 	 access_key: admin
-	     
+
 	prod:
 	 http_server:
 	     port: 80
@@ -44,7 +46,7 @@ For settings which don't belong in the repository (e.g. passwords), use `local.y
 To incorporate it into your program, use the `configure` template:
 
 
-	import yamkeys;
+	import yamlkeys;
 
 	mixin(configure!(HTTPServerSettings, "http_server"));
 	mixin(configure!(string, "access_key"));
@@ -77,14 +79,14 @@ otherwise the `default` will be used.
     be printed, but it will still work.
   * both `.yaml` and `.yml` are recognized.
   * this is an alpha version, contact me if you have any questions.
-  
-## Building
-Just use the `dub` repository `yamkeys`, or include `source/yamkeys.d` wherever.
 
-[dyaml](https://github.com/kiith-sa/D-YAML) is a dependency.
+## Building
+Just use the `dub` repository `yamlkeys`, or include `source/yamlkeys.d` wherever.
+
+[yamld](https://github.com/LLC-CERERIS/yaml-d) is a dependency.
 
 ## Full public API
-There isn't much more than what's in the tutorial, but it's available at 
-`docs/yamkeys.html`.
+There isn't much more than what's in the tutorial, but it's available at
+`docs/yamlkeys.html`.
 
 

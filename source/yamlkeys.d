@@ -1,4 +1,4 @@
-// yamkeys - a runtime configuration management utility.
+// yamlkeys - a runtime configuration management utility.
 // Copyright © 2013 Nathan M. Swan
 // Available under the MIT Expat License, see LICENSE file.
 // Written in the D Programming Language
@@ -10,8 +10,8 @@
  + License: MIT (Expat) License
  + Copyright: Copyright © 2013 Nathan M. Swan
  +/
- 
-module yamkeys;
+
+module yamlkeys;
 
 private:
 import std.algorithm;
@@ -22,7 +22,7 @@ import std.string;
 import std.traits;
 import std.path;
 
-import dyaml.all;
+import yamld;
 
 public:
 /// The global configuration variable.
@@ -40,15 +40,15 @@ string configure(T, string name = defaultName!T)() {
     import std.array;
     import std.string;
 
-    string code = 
+    string code =
         `private __gshared TYPE _vcyam_NAME; `~
         `shared static this() { config.load(_vcyam_NAME, "NAME"); } `~
-        `public @property TYPE NAME(yamkeys.Configuration c) { `~
+        `public @property TYPE NAME(yamlkeys.Configuration c) { `~
             `return _vcyam_NAME; }`;
 
     code = replace(code, `TYPE`, T.stringof);
     code = replace(code, `NAME`, name);
-    
+
     return code;
 }
 
@@ -101,7 +101,7 @@ final class Configuration {
         if (scName is null) {
             if (auto cp = "config" in yLocal) {
                 scName = cp.as!string;
-            } 
+            }
         }
 
         if (auto cp = "default" in yLocal) {
@@ -167,7 +167,7 @@ final class Configuration {
         if (scInL)
             if (auto val = key in *scInL)
                 configs ~= *val;
-        
+
         return configs;
     }
 
@@ -217,7 +217,7 @@ final class Configuration {
                             `(t, node["`~mb~`"]);`~
                         `obj.`~mb~` = t;`;
                     res ~= "
-static if (__traits(compiles, obj."~mb~"=typeof(obj."~mb~").init)) { 
+static if (__traits(compiles, obj."~mb~"=typeof(obj."~mb~").init)) {
 mixin(`"~loadStmt~"`); }
 }";
                 }
@@ -229,7 +229,7 @@ mixin(`"~loadStmt~"`); }
     }
 }
 
-class YamkeysException : Exception {
+class YamlkeysException : Exception {
     this(string msg, string file=__FILE__, int line=__LINE__, Throwable t=null) {
         super(msg, file, line, t);
     }

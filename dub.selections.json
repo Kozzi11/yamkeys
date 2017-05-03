@@ -1,0 +1,8 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"dyaml": "0.5.3",
+		"tinyendian": "0.1.2",
+		"yaml-d": "0.0.1"
+	}
+}

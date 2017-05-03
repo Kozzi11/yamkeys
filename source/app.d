@@ -3,9 +3,9 @@
 // Available under the MIT Expat License, see LICENSE file.
 // Written in the D Programming Language
 
-import yamkeys;
+import yamlkeys;
 
-version(yamkeys_main) {
+version(yamlkeys_main) {
 
     struct Abcd {
         bool flag = true;
